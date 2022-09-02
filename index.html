@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BD News Online</title>
+    <title>News Online</title>
     <!-- daisi ui  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- tailwind  -->
@@ -15,7 +15,7 @@
         <!-- navbar  -->
         <div class="navbar bg-base-100">
             <div class="flex-1">
-              <a class="btn btn-ghost normal-case text-xl">BD <span class="text-lime-600">News</span> Online</a>
+              <a class="btn btn-ghost normal-case text-xl"><span class="text-lime-600">News</span> Online</a>
             </div>
             <div class="flex-none">
               <ul class="menu menu-horizontal p-0">
@@ -27,11 +27,15 @@
         <hr class="border-1 border-slate-500 my-2">
     </header>
     <main>
+        <!-- category  -->
         <section>
-              <!-- category  -->
-        <div id="category-container" class="flex justify-evenly">
+            <div id="category-container" class="flex justify-evenly">
 
-        </div>
+            </div>
+        </section>
+        <!-- spinner  -->
+        <section id="spinner" class="hidden">
+            <progress class="progress progress-primary w-full"></progress>
         </section>
         <!-- category details card  -->
         <section class="container mx-auto my-10">

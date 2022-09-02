@@ -33,15 +33,23 @@ const loadCategoryItems = async(number) => {
     // console.log(url);
     fetch(url)
     .then(res => res.json())
-    .then(data => displayCategoryItems(data.data))
-    .catch(console.error())
+    .then(data => displayCategoryItems(data.data));
+
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('hidden');
 }
 
 const displayCategoryItems = (items) => {
     // const items = await loadCategoryItems();
-    console.log(items);
+    // console.log(items.length);
     const itemsContainer = document.getElementById('items-container');
     itemsContainer.textContent = '';
+    if (items.length === 0) {
+        itemsContainer.innerHTML = `
+            <h3 class="text-center text-3xl text-red-700">News Not Found</h3>
+        `;
+        return;
+    }
     items.forEach(item => {
         // console.log(item);
         const itemDiv = document.createElement('div');
@@ -72,7 +80,8 @@ const displayCategoryItems = (items) => {
         </div>
         `;
         itemsContainer.appendChild(itemDiv);
+        spinner.classList.add('hidden');
     });
 }
-displayCategoryItems()
+// displayCategoryItems()
 // loadCategoryItems()
