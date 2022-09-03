@@ -28,7 +28,7 @@ const displayCategories = async() =>{
 displayCategories();
 // loadCategories();
 
-const loadCategoryItems = async(number) => {
+const loadCategoryItems = (number) => {
     const url = `https://openapi.programming-hero.com/api/news/category/0${number}`;
     // console.log(url);
     fetch(url)
@@ -41,6 +41,10 @@ const loadCategoryItems = async(number) => {
 
 const displayCategoryItems = (items) => {
     // const items = await loadCategoryItems();
+    const itemsNumber = document.getElementById('itemsNumber');
+    itemsNumber.innerHTML = `
+        <p class="text-2xl text-center text-black">${items.length} items found.</p>
+    `;
     // console.log(items.length);
     const itemsContainer = document.getElementById('items-container');
     itemsContainer.textContent = '';
