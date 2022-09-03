@@ -5,7 +5,7 @@ const loadCategories = async() =>{
         const data = await res.json();
         return data.data.news_category;
     } catch (error) {
-        alert(error);
+        console.log('error');
     }
 }
 
