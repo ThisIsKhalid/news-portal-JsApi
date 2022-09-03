@@ -96,18 +96,25 @@ const loadItemDetails = (itemId) => {
     .then(res => res.json())
     .then(data => displayItemDetailsInModal(data.data[0]))
 }
+
 const displayItemDetailsInModal = (newsDetail) => {
     // console.log(newsDetail);
+    const {image_url, title, details} = newsDetail;
     const modalContainer = document.getElementById('modal-container');
     const modalDiv = document.createElement('div');
     modalDiv.innerHTML = `
         <input type="checkbox" id="my-modal-3" class="modal-toggle" />
         <div class="modal">
-        <div class="modal-box relative">
-            <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-            <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-        </div>
+            <div class="card bg-base-100 shadow-xl modal-box relative">
+                <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <figure class="">
+                    <img src="${image_url}" alt="Shoes" class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center">
+                    <h2 class="card-title">${title}</h2>
+                    <p>${details.slice(0, 400) + '...'}</p>
+                </div>
+            </div>
         </div>
     `;
     modalContainer.appendChild(modalDiv);
