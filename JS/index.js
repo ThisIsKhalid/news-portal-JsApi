@@ -3,7 +3,6 @@ const loadCategories = async() =>{
     try {
         const res = await fetch(url);
         const data = await res.json();
-        // console.log(data.data.news_category);
         return data.data.news_category;
     } catch (error) {
         alert(error);
@@ -12,25 +11,21 @@ const loadCategories = async() =>{
 
 const displayCategories = async() =>{
     const categories = await loadCategories();
-    // console.log(categories);
     const categoryContainer = document.getElementById('category-container');
     categories.forEach(category => {
-        // console.log(category);
         const categoryDiv = document.createElement('div');
         categoryDiv.innerHTML = `
             <p onclick="loadCategoryItems(${category.category_id})">${category.category_name}</p>
         `;
-        // console.log(category.category_id);
         categoryContainer.appendChild(categoryDiv);
     });
 }
 
 displayCategories();
-// loadCategories();
 
 const loadCategoryItems = (number) => {
     const url = `https://openapi.programming-hero.com/api/news/category/0${number}`;
-    // console.log(url);
+    
     fetch(url)
     .then(res => res.json())
     .then(data => displayCategoryItems(data.data))
@@ -41,17 +36,14 @@ const loadCategoryItems = (number) => {
 }
 
 const displayCategoryItems = (items) => {
-    // const items = await loadCategoryItems();
     const itemsNumber = document.getElementById('itemsNumber');
     itemsNumber.innerHTML = `
         <p class="text-xl text-center text-black">${items.length} items found.</p>
     `;
-    // console.log(items);
     
     const sortedItems = items.sort((a, b) => {
         return b.total_view - a.total_view;
     });
-    // console.log(sortedItems);
     const itemsContainer = document.getElementById('items-container');
     itemsContainer.textContent = '';
     if (items.length === 0) {
@@ -61,7 +53,6 @@ const displayCategoryItems = (items) => {
         spinner.classList.add('hidden');
     }
     sortedItems.forEach(item => {
-        // console.log(item);
         const itemDiv = document.createElement('div');
         itemDiv.innerHTML = `
         <div class="card md:card-side bg-base-100 shadow-xl my-5">
@@ -97,7 +88,6 @@ const displayCategoryItems = (items) => {
 
 const loadItemDetails = (itemId) => {
     const url = `https://openapi.programming-hero.com/api/news/${itemId}`;
-    // console.log(url);
     fetch(url)
     .then(res => res.json())
     .then(data => displayItemDetailsInModal(data.data[0]))
@@ -105,7 +95,6 @@ const loadItemDetails = (itemId) => {
 }
 
 const displayItemDetailsInModal = (newsDetail) => {
-    // console.log(newsDetail);
     const {image_url, title, details} = newsDetail;
     const modalContent = document.getElementById('modal-content');
 
@@ -134,5 +123,3 @@ const displayItemDetailsInModal = (newsDetail) => {
     `;
     
 }
-// displayCategoryItems()
-// loadCategoryItems()
