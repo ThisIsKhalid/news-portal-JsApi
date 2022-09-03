@@ -6,7 +6,7 @@ const loadCategories = async() =>{
         // console.log(data.data.news_category);
         return data.data.news_category;
     } catch (error) {
-        
+        alert(error);
     }
 }
 
@@ -33,7 +33,8 @@ const loadCategoryItems = (number) => {
     // console.log(url);
     fetch(url)
     .then(res => res.json())
-    .then(data => displayCategoryItems(data.data));
+    .then(data => displayCategoryItems(data.data))
+    .catch(error => console.log(error))
 
     const spinner = document.getElementById('spinner');
     spinner.classList.remove('hidden');
@@ -45,16 +46,21 @@ const displayCategoryItems = (items) => {
     itemsNumber.innerHTML = `
         <p class="text-xl text-center text-black">${items.length} items found.</p>
     `;
-    // console.log(items.length);
+    // console.log(items);
+    
+    const sortedItems = items.sort((a, b) => {
+        return b.total_view - a.total_view;
+    });
+    // console.log(sortedItems);
     const itemsContainer = document.getElementById('items-container');
     itemsContainer.textContent = '';
     if (items.length === 0) {
         itemsContainer.innerHTML = `
             <h3 class="text-center text-3xl text-red-700">News Not Found</h3>
         `;
-        return;
+        spinner.classList.add('hidden');
     }
-    items.forEach(item => {
+    sortedItems.forEach(item => {
         // console.log(item);
         const itemDiv = document.createElement('div');
         itemDiv.innerHTML = `
@@ -95,6 +101,7 @@ const loadItemDetails = (itemId) => {
     fetch(url)
     .then(res => res.json())
     .then(data => displayItemDetailsInModal(data.data[0]))
+    .catch(error => console.log(error))
 }
 
 const displayItemDetailsInModal = (newsDetail) => {

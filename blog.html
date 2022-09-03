@@ -26,22 +26,57 @@
         </div>
     </header>
     <main>
-        <section class="container mx-auto flex flex-col gap-5">
-            <div>
-                <h1 class="text-xl">Var, Let, Const difference?</h1>
-                <p></p>
+        <section class="container mx-auto">
+            <div class="border-2 p-5 border-red-400">
+                <h1 class="text-xl mb-2">Var, Let, Const difference?</h1>
+                <h2 class="text-amber-500">VAR</h2>
+                <ul class="list-disc list-inside">
+                    <li>The scope of a var variable is functional scope</li>
+                    <li>It can be updated and re-declared into the scope.</li>
+                    <li>It can be accessed without initialization as its default value is “undefined”.</li>
+                </ul>
+                <h2 class="text-amber-500">LET</h2>
+                <ul class="list-disc list-inside">
+                    <li>The scope of a let variable is block scope.</li>
+                    <li>It can be updated but cannot be re-declared into the scope.</li>
+                    <li>It cannot be accessed without initialization otherwise it will give referenceError.</li>
+                </ul>
+                <h2 class="text-amber-500">CONST</h2>
+                <ul class="list-disc list-inside">
+                    <li>The scope of a const variable is block scope.</li>
+                    <li>It cannot be updated or re-declared into the scope.</li>
+                    <li>It cannot be accessed without initialization, as it cannot be declared without initialization.</li>
+                </ul>
             </div>
-            <div>
+            <div class="border-2 p-5 border-red-400 my-6">
                 <h1 class="text-xl">Difference between Arrow function and Reguler function?</h1>
-                <p></p>
+                <h2 class="text-amber-500">Arrow function:</h2>
+                <ul class="list-disc list-inside">
+                    <li>this inside the arrow function is bound lexically and equals to this of the outer function.</li>
+                    <li>The arrow function, doesn't define arguments</li>
+                </ul>
+                <h2 class="text-amber-500">Reguler function:</h2>
+                <ul class="list-disc list-inside">
+                    <li>this value inside a regular function is dynamic and depends on the invocation.</li>
+                    <li>arguments object inside the regular functions contains the list of arguments.</li>
+                </ul>
             </div>
-            <div>
+            <div class="border-2 p-5 border-red-400 my-6">
                 <h1 class="text-xl">Map, ForEach, Filter and Find difference?</h1>
-                <p></p>
+                <h2 class="text-amber-500">.map():</h2>
+                <p>.map() executes the same code on every element in an array and returns a new array with the updated elements.</p>
+                <h2 class="text-amber-500">.forEach:</h2>
+                <p>.forEach(), is used to execute the same code on every element in an array but does not change the array and it returns undefined.</p>
+                <h2 class="text-amber-500">.filter():</h2>
+                <p>.filter() checks every element in an array to see if it meets a certain criteria and returns a new array with the elements that return truthy for the criteria.</p>
+                <h2 class="text-amber-500">.find():</h2>
+                <p>.find(): checks every element in an array to see if it meets a certain criteria and returns only one element that return truthy for the criteria.</p>
             </div>
-            <div>
+            <div class="border-2 p-5 border-red-400 my-6">
                 <h1 class="text-xl">Why are you using Tamplate String?</h1>
-                <p></p>
+                <p>Template literals (template strings) allow me to use strings or embedded expressions in the form of a string. They are enclosed in backticks ``. For example,<br>
+                    const name = 'Jack';<br>
+                    console.log(`Hello ${name}!`); // Hello Jack! </p>
             </div>
         </section>
     </main>
